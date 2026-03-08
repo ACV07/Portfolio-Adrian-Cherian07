@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae | Adrian Cherian Veliyathumalil</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            transition: transform var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px);
+            color: #fff;
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        /* Digital Resume Sheet Styles */
+        .cv-sheet {
+            background-color: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 204, 0.1);
+            padding: 3rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-sheet::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+        }
+
+        /* Header */
+        .cv-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1.5rem;
+        }
+
+        .cv-name {
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-title {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* Two-Column Layout */
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .cv-grid {
+                grid-template-columns: 1fr;
+            }
+            .cv-left-col {
+                border-right: none !important;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding-bottom: 2rem;
+            }
+        }
+
+        .cv-left-col {
+            border-right: 1px solid rgba(255,255,255,0.1);
+            padding-right: 2rem;
+        }
+
+        /* Section Styling */
+        .cv-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .cv-section h3 {
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Left Column Specifics */
+        .cv-contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cv-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            font-weight: 600;
+        }
+
+        .cv-contact-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .cv-contact-item a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .cv-contact-icon {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .cv-edu-block {
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-edu-title {
+            font-family: var(--font-sans);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .cv-edu-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            margin-bottom: 0.3rem;
+        }
+
+        .cv-edu-degree {
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .cv-edu-school {
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .cv-cert-list {
+            list-style-type: disc;
+            padding-left: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .cv-cert-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Right Column Specifics */
+        .cv-profile-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .cv-projects-list, .cv-skills-list, .cv-participation-list {
+            list-style-type: disc;
+            padding-left: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .cv-projects-list li, .cv-skills-list li, .cv-participation-list li {
+            margin-bottom: 0.6rem;
+        }
+
+        .cv-skills-list strong {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .print-btn-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, var(--accent-cyan), #0099ff);
+            color: #000;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+            transition: all var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        @media print {
+            body { background: #fff !important; color: #000 !important; }
+            .bg-elements, .page-header, .print-btn-container, .page-transition { display: none !important; }
+            .cv-sheet {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+            .cv-name, .cv-section h3, .cv-edu-title { color: #000 !important; }
+            .cv-title, .cv-edu-degree, .cv-skills-list strong { color: #333 !important; }
+            .cv-contact-item, .cv-contact-item a, .cv-profile-text, .cv-edu-date, .cv-cert-list, .cv-projects-list, .cv-skills-list { color: #444 !important; }
+            .cv-sheet::before { display: none !important; }
+            .cv-left-col { border-right: 1px solid #ccc !important; }
+            .cv-header { border-bottom: 1px solid #ccc !important; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .cv-sheet {
+                padding: 1.5rem;
+            }
+            .cv-name {
+                font-size: 2rem;
+            }
+            .cv-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .cv-left-col {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding-right: 0;
+                padding-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme preload">
+    <!-- Page Transition Overlay -->
+    <div class="page-transition"></div>
+
+    <div class="bg-elements">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="container">
+        
+        <div class="page-header animate-item delay-1">
+            <a href="index.html" class="back-btn page-link">← Return Home</a>
+            <h1 class="glitch-title" data-text="Curriculum Vitae" style="font-size: 2rem;">Curriculum Vitae</h1>
+        </div>
+        
+        <div class="print-btn-container animate-item delay-1">
+            <a href="assets/Adrian_CV.jpeg" download="Adrian_CV.jpeg" onclick="event.preventDefault(); forceDownload(this.href, this.download)" class="download-btn">
+                <span class="icon">⬇️</span> Download Original CV
+            </a>
+        </div>
+
+        <section class="cv-sheet animate-item delay-2">
+            
+            <div class="cv-header">
+                <h1 class="cv-name">Adrian Cherian<br>Veliyathumalil</h1>
+                <div class="cv-title">Student</div>
+            </div>
+
+            <div class="cv-grid">
+                <!-- Left Column -->
+                <div class="cv-left-col">
+                    
+                    <div class="cv-section">
+                        <h3>Contact</h3>
+                        <ul class="cv-contact-list">
+                            <li class="cv-contact-item">
+                                <span class="cv-contact-icon">📞</span>
+                                <span>+91-9074258575</span>
+                            </li>
+                            <li class="cv-contact-item">
+                                <span class="cv-contact-icon">✉️</span>
+                                <span>adriancherian77@gmail.com</span>
+                            </li>
+                            <li class="cv-contact-item">
+                                <span class="cv-contact-icon">📍</span>
+                                <span>Bengaluru, Karnataka, India</span>
+                            </li>
+                            <li class="cv-contact-item">
+                                <span class="cv-contact-icon">🌐</span>
+                                <a href="https://www.linkedin.com/in/adrian-cherian777" target="_blank">linkedin.com/in/adrian-cherian777</a>
+                            </li>
+                            <li class="cv-contact-item">
+                                <span class="cv-contact-icon">💻</span>
+                                <a href="https://github.com/ACV07" target="_blank">github.com/ACV07</a>
+                            </li>
+                            <li class="cv-contact-item">
+                                <span class="cv-contact-icon">🔗</span>
+                                <a href="https://adriancherian.me" target="_blank">adriancherian.me</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-section">
+                        <h3>Education</h3>
+                        <div class="cv-edu-block">
+                            <div class="cv-edu-title">University</div>
+                            <div class="cv-edu-date">2024 - present</div>
+                            <div class="cv-edu-degree">B.C.A. in Cyber Security</div>
+                            <div class="cv-edu-school">Kristu Jayanti University</div>
+                        </div>
+                    </div>
+
+                    <div class="cv-section">
+                        <h3>Certifications</h3>
+                        <ul class="cv-cert-list">
+                            <li>Introduction to Cybersecurity - CISCO</li>
+                            <li>Junior Cybersecurity Analyst Career Path - CISCO</li>
+                            <li>Ethical Hacking for Beginners - Infosys</li>
+                            <li>CCNA: Introduction to Network Course - CISCO</li>
+                            <li>Getting Started with A.I. - IBM</li>
+                            <li>Ethical Hacking Masterclass - Infosys</li>
+                            <li>Cyber Security and Applied Ethical Hacking - Infosys</li>
+                            <li>Digital Engineering - Nasscom</li>
+                            <li>Getting Started with Linux Fundamentals - Red Hat Academy</li>
+                            <li>Lab: Retrieval Augmented Generation with LangChain - IBM</li>
+                            <li>Ethical Hacker - CISCO</li>
+                            <li>Journey to Cloud - IBM</li>
+                            <li>Python Certification Course - IntelliPaat</li>
+                            <li>Programming in Java - NPTEL</li>
+                            <li>The Complete Git Guide - Udemy</li>
+                            <li>Node JS - Udemy</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Right Column -->
+                <div class="cv-right-col">
+                    
+                    <div class="cv-section">
+                        <h3>Profile</h3>
+                        <p class="cv-profile-text">
+                            Motivated second-year BCA student specializing in Cybersecurity with a strong interest in network security, ethical hacking, and data protection. Possesses foundational knowledge of cybersecurity principles, operating systems, and basic programming. Eager to apply academic knowledge to real-world security challenges while continuously learning emerging technologies and security practices. A quick learner with strong analytical and problem-solving skills seeking opportunities to grow in the cybersecurity field.
+                        </p>
+                    </div>
+
+                    <div class="cv-section">
+                        <h3>Academic Projects</h3>
+                        <ul class="cv-projects-list">
+                            <li>Basic Personal Portfolio Website</li>
+                            <li>Currency Converter</li>
+                            <li>Student Attendance Calculator</li>
+                            <li>Student Attendance Recorder</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-section">
+                        <h3>Participated In</h3>
+                        <ul class="cv-participation-list">
+                            <li>24 Hour National Inter-Collegiate Hackathon</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-section">
+                        <h3>Skills</h3>
+                        <ul class="cv-skills-list">
+                            <li><strong>Web Development:</strong> HTML</li>
+                            <li><strong>Tools:</strong> Visual Studio Code, MS Office</li>
+                            <li><strong>Soft Skills:</strong> Good Communication Skills, Problem-Solving Ability, Time Management, Adaptability, Team Player</li>
+                            <li><strong>Languages Known:</strong> English, Malayalam, Hindi</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

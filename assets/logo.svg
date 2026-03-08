@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Tech Gradients matching Website Theme -->
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff" />
+      <stop offset="100%" stop-color="#2979ff" />
+    </linearGradient>
+    
+    <linearGradient id="blue-fade" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2979ff" />
+      <stop offset="100%" stop-color="transparent" />
+    </linearGradient>
+
+    <!-- Professional Soft Glow -->
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Animated Outer Orbit Ring -->
+  <g stroke="rgba(0, 229, 255, 0.3)" stroke-width="2" fill="none">
+    <circle cx="250" cy="250" r="220" stroke-dasharray="10 20 50 10" stroke-linecap="round">
+      <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="20s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Inner Tech Ring -->
+  <g filter="url(#neon-glow)">
+    <circle cx="250" cy="250" r="180" fill="none" stroke="url(#blue-fade)" stroke-width="4">
+      <animateTransform attributeName="transform" type="rotate" from="360 250 250" to="0 250 250" dur="15s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Accent nodes on the ring -->
+    <circle cx="250" cy="70" r="6" fill="#00e5ff">
+       <animateTransform attributeName="transform" type="rotate" from="360 250 250" to="0 250 250" dur="15s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="250" cy="430" r="4" fill="#2979ff">
+       <animateTransform attributeName="transform" type="rotate" from="360 250 250" to="0 250 250" dur="15s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Core Hexagon Shield -->
+  <polygon points="250,90 380,165 380,335 250,410 120,335 120,165" fill="rgba(15, 20, 25, 0.8)" stroke="url(#cyan-glow)" stroke-width="3" filter="url(#neon-glow)">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite" />
+  </polygon>
+
+  <!-- Professional "ACV" Typography inside Hexagon -->
+  <g text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-weight="800">
+    <!-- Increased size from 110 to 140, adjusted y from 285 to 295 for perfect vertical centering inside the shield without subtext -->
+    <text x="250" y="295" font-size="140" fill="#ffffff" letter-spacing="4" filter="url(#neon-glow)">
+      ACV
+    </text>
+  </g>
+</svg>

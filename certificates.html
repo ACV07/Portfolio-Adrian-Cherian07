@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates | Adrian Cherian Veliyathumalil</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            transition: transform var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px);
+            color: #fff;
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .cert-card {
+            background: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(rgba(0,255,204,0), rgba(0,255,204,0.05), rgba(0,255,204,0));
+            transform: rotate(45deg);
+            animation: shine 6s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            0% { transform: translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-card h3 {
+            font-family: var(--font-mono);
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .cert-grid {
+                grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme preload">
+    <div class="page-transition"></div>
+
+    <div class="bg-elements">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="container">
+        
+        <div class="page-header animate-item delay-1">
+            <a href="index.html" class="back-btn page-link">← Return Home</a>
+            <h1 class="glitch-title" data-text="Certificates">Certificates</h1>
+        </div>
+
+        <section class="animate-item delay-2">
+            <p class="cyber-text" style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-primary);">
+                Select an institution to view the associated certifications and licenses I have acquired.
+            </p>
+
+            <div class="cert-grid">
+                
+                <a href="ibm-certs.html" class="cert-card page-link">
+                    <div class="cert-icon">🔒</div>
+                    <h3>IBM</h3>
+                    <p>Demonstrating expertise in Artificial Intelligence, Cloud Architectures, and cutting-edge RAG implementations.</p>
+                </a>
+
+                <a href="cisco-certs.html" class="cert-card page-link" style="animation-delay: 0.1s;">
+                    <div class="cert-icon">🔐</div>
+                    <h3>Cisco</h3>
+                    <p>Mastering core networking concepts, cyber threat defense, and ethical hacking techniques.</p>
+                </a>
+
+                <a href="redhat-certs.html" class="cert-card page-link" style="animation-delay: 0.2s;">
+                    <div class="cert-icon">🛡️</div>
+                    <h3>Red Hat Academy</h3>
+                    <p>Proving proficiency in Linux environments, command-line administration, and system fundamentals.</p>
+                </a>
+
+                <a href="nptel-certs.html" class="cert-card page-link" style="animation-delay: 0.3s;">
+                    <div class="cert-icon">🧠</div>
+                    <h3>NPTEL</h3>
+                    <p>Advanced programming methodologies and algorithmic problem-solving with Java.</p>
+                </a>
+
+                <a href="nasscom-certs.html" class="cert-card page-link" style="animation-delay: 0.3s;">
+                    <div class="cert-icon">☠️</div>
+                    <h3>Nasscom</h3>
+                    <p>Pioneering digital engineering concepts and modern tech innovations.</p>
+                </a>
+                
+            
+                <a href="udemy-certs.html" class="cert-card page-link" style="animation-delay: 0.4s;">
+                    <div class="cert-icon">💻</div>
+                    <h3>Udemy</h3>
+                    <p>Comprehensive training in Git version control and building scalable backend systems with Node.js.</p>
+                </a>
+                
+                <a href="intellipaat-certs.html" class="cert-card page-link" style="animation-delay: 0.5s;">
+                    <div class="cert-icon">📊</div>
+                    <h3>IntelliPaat</h3>
+                    <p>Mastering Python for scripting, automation, and advanced data processing.</p>
+                </a>
+                
+                <a href="kristu-certs.html" class="cert-card page-link" style="animation-delay: 0.6s;">
+                    <div class="cert-icon">🎓</div>
+                    <h3>Kristu Jayanti University</h3>
+                    <p>Foundational algorithmic design and programming language semantics.</p>
+                </a>
+
+                <a href="hackathon-certs.html" class="cert-card page-link" style="animation-delay: 0.7s;">
+                    <div class="cert-icon">⚡</div>
+                    <h3>Hackathon</h3>
+                    <p>Rapid prototyping and competitive problem-solving in high-stakes environments.</p>
+                </a>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
